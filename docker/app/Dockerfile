@@ -10,4 +10,7 @@ COPY ./docker/app/php.ini /usr/local/etc/php/php.ini
 
 COPY --from=composer:2.0 /usr/bin/composer /usr/bin/composer
 
+COPY --from=node:18.14 /usr/local/bin /usr/local/bin
+COPY --from=node:18.14 /usr/local/lib /usr/local/lib
+
 WORKDIR /app
