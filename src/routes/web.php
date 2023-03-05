@@ -21,4 +21,9 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-require __DIR__.'/auth.php';
+Route::post('/email', 'App\Http\Controllers\ChangeEmailController@sendChangeEmailLink');
+
+require __DIR__ . '/auth.php';
+
+// 新規メールアドレスに更新
+Route::get("reset/{token}", "App\Http\Controllers\ChangeEmailController@reset");

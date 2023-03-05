@@ -11,6 +11,15 @@
                 <div class="p-6 bg-white border-b border-gray-200">
                     You're logged in!
                 </div>
+
+                <div class="card-body">
+                    新規メールアドレスを入力してください
+                    <form action="/email" method="POST">
+                        {{ csrf_field() }}
+                        <input type="email" name="new_email">
+                        <input type="submit">
+                    </form>
+                </div>
             </div>
         </div>
     </div>
