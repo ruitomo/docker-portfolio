@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ChangeEmailController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,9 +23,33 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-Route::post('/email', 'App\Http\Controllers\ChangeEmailController@sendChangeEmailLink');
-
+Route::post('/email', [ChangeEmailController::class, 'sendChangeEmailLink']);
 require __DIR__ . '/auth.php';
 
-// 新規メールアドレスに更新
-Route::get("reset/{token}", "App\Http\Controllers\ChangeEmailController@reset");
+// 新規メールアドレス更新
+Route::get("reset/{token}", [ChangeEmailController::class, 'reset']);
+
+//プロフィール画面
+Route::get('user/profile/{id}', [ProfileController::class, 'add']);
+Route::post('user/profile/{id}', [ProfileController::class, 'create']);
+
+//プロフィール編集画面
+Route::get('user/edit/{id}', [ProfileController::class, 'edit'])
+    ->name('edit');
+Route::post('user/update/{id}', [ProfileController::class, 'update'])
+    ->name('update');
+
+
+// プロフィール画面
+// Route::get('/profile/{id}', [ProfileController::class, 'edit'])
+//     ->name('profile.edit')
+//     ->middleware('auth');
+
+
+// Route::get('/profile/edit', [ProfileController::class, 'edit'])
+//     ->name('profile.edit')
+//     ->middleware('auth');
+
+// Route::post('/profile/update', [ProfileController::class, 'update'])
+//     ->name('profile.update')
+//     ->middleware('auth');
