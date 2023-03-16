@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ChangeEmailController;
+use App\Http\Controllers\RecruitController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,6 +39,28 @@ Route::get('user/edit/{id}', [ProfileController::class, 'edit'])
     ->name('edit');
 Route::post('user/update/{id}', [ProfileController::class, 'update'])
     ->name('update');
+//募集画面一覧
+Route::get('/recruit', [RecruitController::class, 'index'])
+    ->name('recruit.index');
+
+//募集新規作成画面
+Route::get('/recruit/create', [RecruitController::class, 'create'])
+    ->name('recruit.create');
+//募集確認画面
+Route::post('/recruit', [RecruitController::class, 'store'])
+    ->name('recruit.store');
+//募集編集画面
+
+// 募集編集画面
+Route::get('/recruit/{recruit}/edit', [RecruitController::class, 'edit'])
+    ->name('recruit.edit');
+// 募集更新
+Route::put('/recruit/{recruit}', [RecruitController::class, 'update'])
+    ->name('recruit.update');
+// 募集削除
+Route::delete('/recruit/{recruit}', [RecruitController::class, 'destroy'])
+    ->name('recruit.destroy');
+
 
 
 // プロフィール画面
