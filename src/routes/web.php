@@ -31,7 +31,8 @@ require __DIR__ . '/auth.php';
 Route::get("reset/{token}", [ChangeEmailController::class, 'reset']);
 
 //プロフィール画面
-Route::get('user/profile/{id}', [ProfileController::class, 'add']);
+Route::get('user/profile/{id}', [ProfileController::class, 'add'])
+    ->name('user.profile');
 Route::post('user/profile/{id}', [ProfileController::class, 'create']);
 
 //プロフィール編集画面
@@ -60,9 +61,29 @@ Route::put('/recruit/{recruit}', [RecruitController::class, 'update'])
 // 募集削除
 Route::delete('/recruit/{recruit}', [RecruitController::class, 'destroy'])
     ->name('recruit.destroy');
+// 募集詳細機能
+Route::get('/recruit/{recruit}', [RecruitController::class, 'show'])
+    ->name('recruit.show');
 
+// 応募機能
+Route::post('/recruit/{recruit}/apply', [RecruitController::class, 'apply'])
+    ->name('recruit.apply')->middleware('auth');
 
+//応募者一覧機能
+Route::get('/recruit/{recruit}/applicants', [RecruitController::class, 'applicants'])
+    ->name('recruit.applicants')->middleware('auth');
 
+//マッチング機能
+Route::post('/recruit/{recruit}/applicants/{applicant}/match', [RecruitController::class, 'match'])
+    ->name('recruit.match')->middleware('auth');
+
+//my募集一覧
+// Route::get('/recruit/my-recruits', [RecruitController::class, 'myRecruits'])
+//     ->middleware(['auth'])->name('recruit.my-recruits');
+
+// my募集一覧
+Route::get('/my-recruits', [RecruitController::class, 'myRecruits'])
+    ->middleware(['auth'])->name('recruit.my-recruits');
 // プロフィール画面
 // Route::get('/profile/{id}', [ProfileController::class, 'edit'])
 //     ->name('profile.edit')

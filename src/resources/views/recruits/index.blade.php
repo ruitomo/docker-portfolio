@@ -16,12 +16,8 @@
                         <td>{{ $recruit->created_at }}</td>
                         <td>{{ $recruit->updated_at }}</td>
                         <td>
-                            <a href="{{ route('recruit.edit', $recruit) }}" class="btn btn-primary">編集</a>
-                            <form action="{{ route('recruit.destroy', $recruit) }}" method="POST" style="display: inline-block;">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger">削除</button>
-                            </form>
+                            {{-- 詳細ページリンク --}}
+                            <a href="{{ route('recruit.show', $recruit) }}" class="btn btn-primary">詳細</a>
                         </td>
                     </tr>
                 @endforeach
