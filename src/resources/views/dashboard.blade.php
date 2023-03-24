@@ -23,7 +23,7 @@
                 <div>
                     <a href="{{ route('recruit.my-recruits') }}" class="btn btn-primary">募集</a>
                     <a href="{{ route('recruit.index') }}" class="btn btn-primary">探す</a>
-                    <a href="#" class="btn btn-primary">メッセージ</a>
+                    <a class="nav-link" href="{{ route('rooms.index') }}">メッセージ</a>
                     <a href="{{ route('edit', ['id' => auth()->user()->id]) }}" class="btn btn-primary">マイページ</a>
 
                 </div>
