@@ -10,7 +10,18 @@ class MessageController extends Controller
 {
     public function index(Room $room)
     {
-        $messages = $room->messages()->with('from_user')->get();
+        $messages = Message::with('from_user')
+            ->where(function ($query) use ($room) {
+                $query->where('from_user_id', $room->from_user_id)
+                    ->where('to_user_id', $room->to_user_id);
+            })
+            ->orWhere(function ($query) use ($room) {
+                $query->where('from_user_id', $room->to_user_id)
+                    ->where('to_user_id', $room->from_user_id);
+            })
+            ->orderBy('created_at', 'asc')
+            ->get();
+
 
         return view('messages.index', compact('messages', 'room'));
     }
@@ -23,7 +34,7 @@ class MessageController extends Controller
 
         $message = new Message($request->all());
         $message->from_user_id = auth()->id();
-        $message->to_user_id = $room->to_user_id; // or $room->from_user_id depending on the logic
+        $message->to_user_id = ($room->from_user_id === auth()->id()) ? $room->to_user_id : $room->from_user_id;
         $message->body = $request->input('body');
         $message->save();
 
