@@ -56,7 +56,17 @@ class ProfileController extends Controller
         if (!$user) {
             return redirect()->back()->withErrors(['message' => 'ユーザーが見つかりませんでした']);
         }
-        $user->fill($request->all());
+
+        // 画像アップロード処理
+        if ($request->hasFile('icon_image')) {
+            $file = $request->file('icon_image');
+            $filename = time() . '_' . $file->getClientOriginalName();
+            $destinationPath = public_path('profile_images');
+            $file->move($destinationPath, $filename);
+            $user->img_path = 'profile_images/' . $filename;
+        }
+
+        $user->fill($request->except('icon_image'));
         $user->save();
         return redirect()->back()->with('success', 'プロフィールを更新しました');
         // $user = Auth::user();

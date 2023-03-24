@@ -16,9 +16,9 @@
             <input type="text" name="name" value="{{ $form->name }}" />
             <p>アイコン画像</p>
             <input type="file" name="icon_image">
-              @if ($form->icon_image)
-              <img src="{{ $form->icon_image }}" alt="アイコン画像">
-              @endif
+            @if ($form->img_path)
+            <img src="{{ asset($form->img_path) }}" alt="アイコン画像">
+          @endif
             <p>性別</p>
               <label><input type="radio" name="gender" value="male" {{ $form->gender === 'male' ? 'checked' : '' }}>男性</label>
               <label><input type="radio" name="gender" value="female" {{ $form->gender === 'female' ? 'checked' : '' }}>女性</label>
