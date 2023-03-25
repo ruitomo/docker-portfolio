@@ -11,6 +11,7 @@
                     <tr>
                         <td>
                             @if ($recruit->user)
+                            <a href="{{ route('user.profile', $recruit->user->id) }}">
                             <x-user_icon :imgPath="isset($recruit->user->img_path) ? $recruit->user->img_path : ''" :name="$recruit->user->name" />
                         @else
                             <x-user_icon imgPath="" name="未登録ユーザー" />
