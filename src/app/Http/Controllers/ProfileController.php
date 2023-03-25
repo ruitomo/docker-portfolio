@@ -8,13 +8,18 @@ use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller
 {
-    //登録処理
-    public function add(Request $request)
+    public function add($id)
     {
-        return view('layouts.profile');
-        // $user = User::find($id);
-        // return view('layouts.profile', ['user' => $user]);
+        $user = User::find($id);
+        return view('layouts.profile', compact('user'));
     }
+    //登録処理
+    // public function add(Request $request)
+    // {
+    //     return view('layouts.profile');
+    //     // $user = User::find($id);
+    //     // return view('layouts.profile', ['user' => $user]);
+    // }
 
     public function create(Request $request)
     {
