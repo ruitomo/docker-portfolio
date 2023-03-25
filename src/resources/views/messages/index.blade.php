@@ -3,7 +3,15 @@
     <div>
         @foreach ($messages as $message)
             <div>
-                <strong>{{ $message->from_user->name }}</strong>: {{ $message->body }}
+                <div class="user-icon">
+                    @if (!empty($message->from_user->img_path))
+                        <img src="{{ asset($message->from_user->img_path) }}" alt="{{ $message->from_user->name }}'s profile image" width="50" height="50" />
+                    @else
+                        <img src="{{ asset('images/default-avatar.png') }}" alt="Default profile image" width="50" height="50" />
+                    @endif
+                    <span><strong>{{ $message->from_user->name }}</strong></span>
+                </div>
+                {{ $message->body }}
             </div>
         @endforeach
     </div>
