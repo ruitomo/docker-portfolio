@@ -13,7 +13,8 @@ class RecruitController extends Controller
     // 募集一覧
     public function index()
     {
-        $recruits = Recruit::all();
+        // $recruits = Recruit::all();
+        $recruits = Recruit::with('user')->get();
 
         return view('recruits.index', compact('recruits'));
         // return view('recruits.index', ['recruit' => $recruit]);

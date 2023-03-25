@@ -66,6 +66,7 @@ class ProfileController extends Controller
             $user->img_path = 'profile_images/' . $filename;
         }
 
+
         $user->fill($request->except('icon_image'));
         $user->save();
         return redirect()->back()->with('success', 'プロフィールを更新しました');
