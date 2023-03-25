@@ -7,6 +7,8 @@
         <div class="card-body">
           <!-- 重要な箇所ここから -->
           {{-- {{ route('profile.update') }} --}}
+          <x-user_icon :imgPath="$form->img_path" :name="$form->name" />
+
           <form action="/user/update/{{ $form->id }}" method="post" enctype="multipart/form-data">
 
             @csrf

@@ -9,6 +9,13 @@
             <tbody>
                 @foreach ($recruits as $recruit)
                     <tr>
+                        <td>
+                            @if ($recruit->user)
+                            <x-user_icon :imgPath="isset($recruit->user->img_path) ? $recruit->user->img_path : ''" :name="$recruit->user->name" />
+                        @else
+                            <x-user_icon imgPath="" name="未登録ユーザー" />
+                        @endif
+                        </td>
                         <td>募集タイトル:{{ $recruit->headline }}</td>
                         <td>サウナ施設名:{{ $recruit->facility }}</td>
                         <td>サ飯待ち合わせ時間{{ $recruit->meeting_time }}</td>

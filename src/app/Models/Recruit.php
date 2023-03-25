@@ -29,4 +29,9 @@ class Recruit extends Model
     {
         return $this->hasMany(Apply::class, 'recruitment_id');
     }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'from_user_id');
+    }
 }
