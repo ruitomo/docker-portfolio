@@ -82,21 +82,6 @@ class RecruitController extends Controller
 
     public function apply(Request $request, Recruit $recruit)
     {
-        // // マッチングテーブルにデータを追加
-        // $matching = Matching::create([
-        //     'from_user_id' => $recruit->from_user_id,
-        //     'to_user_id' => auth()->id(),
-        //     'matching_data' => 1, // 任意のデータ
-        // ]);
-
-        // // ルームテーブルにデータを追加
-        // $room = Room::create([
-        //     'from_user_id' => $recruit->from_user_id,
-        //     'to_user_id' => auth()->id(),
-        // ]);
-
-        // // リダイレクト
-        // return redirect()->route('messages.index', $room->id);
 
         // マッチング確認
         $matchingExists = Matching::where('to_user_id', $recruit->from_user_id)
@@ -134,41 +119,4 @@ class RecruitController extends Controller
         // dd($recruits);
         return view('recruits.my_recruits', compact('recruits'));
     }
-
-    //マッチング機能
-    // public function match(Request $request, Recruit $recruit)
-    // {
-
-    //     $applicants = $recruit->applicants;
-
-    //     if ($applicants === null || $applicants->isEmpty()) {
-    //         return redirect()->back()->with('error', '応募者がいません');
-    //     }
-
-    //     // 各応募者に対してマッチングを作成し、チャットルームを作成
-    //     foreach ($applicants as $applicant) {
-    //         // Roomを作成
-    //         $room = new Room();
-    //         $room->from_user_id = $recruit->from_user_id;
-    //         $room->to_user_id = $applicant->apply_user_id;
-    //         $room->save();
-
-    //         // マッチングを作成
-    //         $matching = new Matching();
-    //         $matching->from_user_id = $recruit->from_user_id;
-    //         $matching->to_user_id = $applicant->apply_user_id;
-    //         $matching->room_id = $room->id; // チャットルームのIDを保存
-    //         $matching->save();
-    //     }
-
-    //     // 応募を削除して、他のユーザーが同じ募集に応募できなくする
-    //     $recruit->delete();
-
-    //     // 募集一覧画面にリダイレクト
-    //     return redirect()->route('recruit.index');
-    // }
-
-
-
-
 }
