@@ -24,6 +24,13 @@
                         <td>{{ $recruit->created_at }}</td>
                         <td>{{ $recruit->updated_at }}</td>
                         <td>
+                            @if($recruit->is_matched())
+                            <p class="text-danger">この募集は既にマッチングが成立しています。</p>
+                        @else
+                            <p class="text-success">マッチング待ち</p>
+                        @endif
+                        </td>
+                        <td>
                             {{-- 詳細ページリンク --}}
                             <a href="{{ route('recruit.show', $recruit) }}" class="btn btn-primary">詳細</a>
                         </td>

@@ -14,7 +14,7 @@ class RecruitController extends Controller
     public function index()
     {
         // $recruits = Recruit::all();
-        $recruits = Recruit::with('user')->get();
+        $recruits = Recruit::with('user', 'matching')->get();
 
         return view('recruits.index', compact('recruits'));
         // return view('recruits.index', ['recruit' => $recruit]);
@@ -60,7 +60,7 @@ class RecruitController extends Controller
     {
         $recruit->delete();
 
-        return redirect()->route('recruit.index');
+        return redirect()->route('recruit.my-recruits');
     }
     //募集詳細機能
     public function show(Recruit $recruit)
@@ -97,6 +97,17 @@ class RecruitController extends Controller
 
         // // リダイレクト
         // return redirect()->route('messages.index', $room->id);
+
+        // マッチング確認
+        $matchingExists = Matching::where('to_user_id', $recruit->from_user_id)
+            ->exists();
+
+        if ($matchingExists) {
+            // Return with error message
+            return redirect()->back()
+                ->with('error', 'この募集はすでにマッチングが成立しています。');
+        }
+
 
         // マッチングテーブルにデータを追加
         $matching = Matching::create([

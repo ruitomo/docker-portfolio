@@ -28,4 +28,9 @@ class Matching extends Model
     {
         return $this->belongsTo(Room::class);
     }
+
+    public function matching()
+    {
+        return $this->hasOne(Matching::class, 'to_user_id', 'from_user_id');
+    }
 }
