@@ -3,7 +3,15 @@
 {{-- @section('content') --}}
     <div class="container">
         <h1>募集一覧</h1>
-
+        <!-- 検索フォーム -->
+        <form action="{{ route('recruit.index') }}" method="get">
+            <div class="input-group">
+                <input type="text" name="search" class="form-control" placeholder="検索キーワード" value="{{ request('search') }}">
+                <span class="input-group-btn">
+                    <button type="submit" class="btn btn-primary">検索</button>
+                </span>
+            </div>
+        </form>
         <table class="table">
            
             <tbody>
