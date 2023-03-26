@@ -36,4 +36,9 @@ class Room extends Model
             'from_user_id' // Matchingのローカルキー
         );
     }
+    // チャットルームにアイコン表示のリレーション
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'from_user_id');
+    }
 }
