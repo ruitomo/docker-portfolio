@@ -11,13 +11,23 @@ use App\Models\Room;
 class RecruitController extends Controller
 {
     // 募集一覧
-    public function index()
+    public function index(Request $request)
     {
-        // $recruits = Recruit::all();
-        $recruits = Recruit::with('user', 'matching')->get();
+        $search = $request->input('search');
+
+        $recruits = Recruit::with('user', 'matching');
+
+        if ($search) {
+            $recruits->where(function ($query) use ($search) {
+                $query->where('headline', 'like', '%' . $search . '%')
+                    ->orWhere('facility', 'like', '%' . $search . '%')
+                    ->orWhere('recruitment_contents', 'like', '%' . $search . '%');
+            });
+        }
+
+        $recruits = $recruits->get();
 
         return view('recruits.index', compact('recruits'));
-        // return view('recruits.index', ['recruit' => $recruit]);
     }
     // 募集新規登録画面
     public function create()
