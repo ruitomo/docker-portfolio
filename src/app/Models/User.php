@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Database\Eloquent\Model;
 
 class User extends Authenticatable
 {
@@ -17,10 +18,25 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+
+    protected $guarded = array('id');
+
     protected $fillable = [
         'name',
         'email',
-        'password',
+        'gender',
+        'birthday',
+        'img_path',
+        'residence',
+        'job',
+        'homesauna',
+        'aufguss',
+        'gosauna',
+        'saunahat',
+        'hobby',
+        'routine',
+        'introduction',
+        'password'
     ];
 
     /**
