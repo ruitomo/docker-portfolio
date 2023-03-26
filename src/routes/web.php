@@ -73,8 +73,6 @@ Route::post('/recruit/{recruit}/apply', [RecruitController::class, 'apply'])
 Route::post('/recruit/{recruit}/match', [RecruitController::class, 'match'])
     ->name('recruit.match')->middleware('auth');
 
-
-
 // my募集一覧
 Route::get('/my-recruits', [RecruitController::class, 'myRecruits'])
     ->middleware(['auth'])->name('recruit.my-recruits');
@@ -84,3 +82,6 @@ Route::post('/messages/{room}', [MessageController::class, 'store'])->middleware
 
 //ルーム
 Route::get('/rooms', [RoomController::class, 'index'])->middleware(['auth'])->name('rooms.index');
+
+//room削除
+Route::delete('rooms/{room}', [RoomController::class, 'destroy'])->name('rooms.destroy');
