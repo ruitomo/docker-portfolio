@@ -19,4 +19,21 @@ class Room extends Model
         return $this->hasMany(Message::class, 'from_user_id', 'from_user_id')
             ->where('messages.to_user_id', $this->to_user_id);
     }
+    public function matching()
+    {
+        return $this->hasOne(Matching::class, 'from_user_id', 'from_user_id')
+            ->where('to_user_id', $this->to_user_id);
+    }
+
+    public function recruit()
+    {
+        return $this->hasOneThrough(
+            Recruit::class,
+            Matching::class,
+            'to_user_id', // Matchingの外部キー
+            'from_user_id', // Recruitの外部キー
+            'to_user_id', // Roomのローカルキー
+            'from_user_id' // Matchingのローカルキー
+        );
+    }
 }
