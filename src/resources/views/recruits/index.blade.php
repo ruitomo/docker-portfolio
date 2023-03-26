@@ -9,6 +9,7 @@
                 <input type="text" name="search" class="form-control" placeholder="検索キーワード" value="{{ request('search') }}">
                 <span class="input-group-btn">
                     <button type="submit" class="btn btn-primary">検索</button>
+                    <a href="{{ route('recruit.index') }}" class="btn btn-secondary">リセット</a>
                 </span>
             </div>
         </form>
