@@ -12,7 +12,8 @@ class RoomController extends Controller
     public function index()
     {
         $user_id = auth()->id();
-        $rooms = Room::with('matching.recruit')
+        // $rooms = Room::with('matching.recruit')
+        $rooms = Room::with(['recruit', 'user'])
             ->where('from_user_id', $user_id)
             ->orWhere('to_user_id', $user_id)
             ->get();
