@@ -36,6 +36,7 @@ class MessageController extends Controller
         $message->from_user_id = auth()->id();
         $message->to_user_id = ($room->from_user_id === auth()->id()) ? $room->to_user_id : $room->from_user_id;
         $message->body = $request->input('body');
+        $message->room_id = $room->id; // room_idを指定
         $message->save();
 
         return redirect()->route('messages.index', $room->id);

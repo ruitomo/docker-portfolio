@@ -41,4 +41,10 @@ class Room extends Model
     {
         return $this->belongsTo(User::class, 'from_user_id');
     }
+
+    // チャット一覧更新リレーション
+    public function latestMessage()
+    {
+        return $this->hasOne(Message::class, 'room_id', 'id')->latest();
+    }
 }
