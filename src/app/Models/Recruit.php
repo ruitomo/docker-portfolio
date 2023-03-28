@@ -43,6 +43,6 @@ class Recruit extends Model
 
     public function is_matched()
     {
-        return Matching::where('to_user_id', $this->from_user_id)->exists();
+        return Matching::where('recruit_id', $this->id)->exists();
     }
 }

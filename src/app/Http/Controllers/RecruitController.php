@@ -78,17 +78,7 @@ class RecruitController extends Controller
         return view('recruits.show', compact('recruit'));
     }
 
-    //応募機能
-    // public function apply(Request $request, Recruit $recruit)
-    // {
-    //     $apply = new Apply();
-    //     $apply->recruitment_id = $recruit->id;
-    //     $apply->apply_user_id = auth()->user()->id;
-    //     dd($apply);
-    //     $apply->save();
 
-    //     return redirect()->route('recruit.show', $recruit);
-    // }
 
     public function apply(Request $request, Recruit $recruit)
     {
@@ -108,6 +98,7 @@ class RecruitController extends Controller
         $matching = Matching::create([
             'from_user_id' => auth()->id(),
             'to_user_id' => $recruit->from_user_id,
+            'recruit_id' => $recruit->id,
         ]);
 
         // ルームテーブルにデータを追加

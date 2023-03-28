@@ -12,6 +12,7 @@ class Matching extends Model
         'from_user_id',
         'to_user_id',
         'room_id',
+        'recruit_id',
     ];
 
     public function fromUser()
