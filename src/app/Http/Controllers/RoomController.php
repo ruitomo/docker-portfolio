@@ -12,14 +12,15 @@ class RoomController extends Controller
     public function index()
     {
         $user_id = auth()->id();
-        // $rooms = Room::with('matching.recruit')
-        $rooms = Room::with(['recruit', 'user'])
+        $rooms = Room::with(['recruit', 'user', 'latestMessage'])
             ->where('from_user_id', $user_id)
             ->orWhere('to_user_id', $user_id)
             ->get();
 
+
         return view('rooms.index', compact('rooms'));
     }
+
 
 
     public function destroy(Room $room)
