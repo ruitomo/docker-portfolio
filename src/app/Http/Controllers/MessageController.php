@@ -11,20 +11,13 @@ class MessageController extends Controller
     public function index(Room $room)
     {
         $messages = Message::with('from_user')
-            ->where(function ($query) use ($room) {
-                $query->where('from_user_id', $room->from_user_id)
-                    ->where('to_user_id', $room->to_user_id);
-            })
-            ->orWhere(function ($query) use ($room) {
-                $query->where('from_user_id', $room->to_user_id)
-                    ->where('to_user_id', $room->from_user_id);
-            })
+            ->where('room_id', $room->id) // この部分を変更
             ->orderBy('created_at', 'asc')
             ->get();
 
-
         return view('messages.index', compact('messages', 'room'));
     }
+
 
     public function store(Request $request, Room $room)
     {
