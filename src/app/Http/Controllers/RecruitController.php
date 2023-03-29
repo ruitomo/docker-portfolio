@@ -85,13 +85,8 @@ class RecruitController extends Controller
 
         // マッチング確認
         $matchingExists = Matching::where('to_user_id', $recruit->from_user_id)
+            ->where('recruit_id', $recruit->id)
             ->exists();
-
-        if ($matchingExists) {
-            // Return with error message
-            return redirect()->back()
-                ->with('error', 'この募集はすでにマッチングが成立しています。');
-        }
 
 
         // マッチングテーブルにデータを追加
