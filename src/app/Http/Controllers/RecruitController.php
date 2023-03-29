@@ -102,6 +102,12 @@ class RecruitController extends Controller
             'to_user_id' => $recruit->from_user_id,
         ]);
 
+        // // 募集データにroom_idを追加
+        // $recruit->update(['room_id' => $room->id]);
+        // Recruitインスタンスにroom_idを設定して保存
+        $recruit->room_id = $room->id;
+        $recruit->save();
+
         // リダイレクト
         return redirect()->route('messages.index', $room->id);
     }

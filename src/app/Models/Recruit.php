@@ -45,4 +45,9 @@ class Recruit extends Model
     {
         return Matching::where('recruit_id', $this->id)->exists();
     }
+
+    public function room()
+    {
+        return $this->belongsTo(Room::class);
+    }
 }
