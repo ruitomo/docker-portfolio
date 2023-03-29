@@ -27,19 +27,19 @@ class Room extends Model
 
     public function recruit()
     {
-        return $this->hasOneThrough(
-            Recruit::class,
-            Matching::class,
-            'to_user_id', // Matchingの外部キー
-            'from_user_id', // Recruitの外部キー
-            'to_user_id', // Roomのローカルキー
-            'from_user_id' // Matchingのローカルキー
-        );
+        return $this->hasOne(Recruit::class, 'room_id', 'id');
     }
     // チャットルームにアイコン表示のリレーション
     public function user()
     {
-        return $this->belongsTo(User::class, 'from_user_id');
+        return $this->hasOneThrough(
+            User::class,
+            Recruit::class,
+            'room_id', // Recruitの外部キー
+            'id', // Userの外部キー
+            'id', // Roomのローカルキー
+            'from_user_id' // Recruitのローカルキー
+        );
     }
 
     // チャット一覧更新リレーション
