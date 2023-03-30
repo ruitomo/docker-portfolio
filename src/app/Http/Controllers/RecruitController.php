@@ -121,4 +121,10 @@ class RecruitController extends Controller
         // dd($recruits);
         return view('recruits.my_recruits', compact('recruits'));
     }
+
+    // 募集内容閲覧
+    public function watchShow(Recruit $recruit)
+    {
+        return view('recruits.watch_show', compact('recruit'));
+    }
 }

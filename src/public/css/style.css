@@ -1,0 +1,58 @@
+.button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.button-container button,
+.button-container a {
+    width: 200px;
+    margin: 0 0.5rem;
+    text-align: center;
+}
+
+.button-container button,
+.button-container a {
+    width: 200px;
+    margin: 0 0.5rem;
+    text-align: center;
+}
+
+.search-form {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.title-container {
+    display: flex;
+    justify-content: center;
+}
+.form-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.custom-line-height {
+    line-height: 1.6;
+}
+
+.status-text {
+    font-weight: bold;
+    font-size: 14px;
+    margin-top: 0.5rem;
+}
+
+@media screen and (max-width: 767px) {
+    .button-container {
+        flex-direction: column;
+    }
+
+    .button-container button,
+    .button-container a {
+        margin: 0.5rem 0;
+    }
+}

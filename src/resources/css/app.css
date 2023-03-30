@@ -1,3 +1,19 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* app.css */
+@layer components {
+    .message-container {
+        @apply my-2;
+    }
+    .message {
+        @apply rounded-md p-3 break-words;
+    }
+    .message.from-me {
+        @apply bg-blue-500 text-white self-end;
+    }
+    .message.from-them {
+        @apply bg-gray-300 text-gray-700 self-start;
+    }
+}
