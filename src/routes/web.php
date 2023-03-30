@@ -85,3 +85,6 @@ Route::get('/rooms', [RoomController::class, 'index'])->middleware(['auth'])->na
 
 //room削除
 Route::delete('rooms/{room}', [RoomController::class, 'destroy'])->name('rooms.destroy');
+
+//募集詳細閲覧
+Route::get('/recruits/{recruit}/watch-show', [App\Http\Controllers\RecruitController::class, 'watchShow'])->name('recruit.watch-show');

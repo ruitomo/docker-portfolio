@@ -7,7 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-  
+
 </head>
 <body class="antialiased">
     <div class="recruit-container">
@@ -21,13 +21,6 @@
                 @endphp
 
                 <div class="border border-gray-200 p-6 rounded-lg bg-gray-100 custom-line-height">
-                    <p class="status-text">
-                        @if($recruit->is_matched())
-                            <span class="text-danger">この募集は既にマッチングが成立してます</span>
-                        @else
-                            <span class="text-success">マッチング待ち</span>
-                        @endif
-                    </p>
                     <div class="flex justify-between items-center" style="margin-bottom: 3px;">
                         <div class="flex items-center">
                             @if ($recruit->user)
@@ -52,13 +45,6 @@
                             <p class="leading-relaxed text-base">サウナ施設名: {{ $recruit->facility }}</p>
                             <p class="leading-relaxed text-base">サ飯待ち合わせ時間: {{ $recruit->meeting_time }}</p>
                             <p class="leading-relaxed text-base">募集内容: {{ $recruit->recruitment_contents }}</p>
-                            <div class="mt-4 button-container">
-                                <form action="{{ route('recruit.apply', $recruit->id) }}" method="POST">
-                                    @csrf
-                                    <button type="submit" style="background-color: #89CFF0;" class="text-white border-0 py-2 focus:outline-none hover:bg-blue-400 rounded text-lg relative z-10">応募する</button>
-                                </form>
-                            </div>
-                        
                     </div>
                 </div>
             </div>
@@ -66,5 +52,3 @@
     </div>
 </body>
 </html>
-
-
