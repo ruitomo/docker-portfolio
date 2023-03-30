@@ -46,6 +46,32 @@
     margin-top: 0.5rem;
 }
 
+.bottom-nav-button {
+    width: 100%;
+    text-align: center;
+    background-color: #7b838a;
+    min-height: 44px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.bottom-nav-button:hover {
+    background-color: #6b747a; /* ボタンのhover時の色 */
+}
+
+.bottom-nav-divider {
+    border-right: 1px solid white;
+}
+
+.bottom-nav-container {
+    z-index: 1000;
+}
+
+.active-nav-button {
+    background-color: #ffa500;
+    color: #ffffff;
+}
+
 @media screen and (max-width: 767px) {
     .button-container {
         flex-direction: column;
