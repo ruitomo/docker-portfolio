@@ -44,7 +44,7 @@
 
                         <div class="flex flex-col items-center mt-4">
                             <div class="text-center mb-2">
-                                <button style="background-color: #89CFF0; width: 200px;" class="text-white border-0 py-2 focus:outline-none hover:bg-blue-400 rounded text-lg relative z-10"> <!-- width を style 属性に追加 -->
+                                <button style="background-color: #89CFF0;" class="text-white border-0 py-2 focus:outline-none hover:bg-blue-400 rounded text-lg relative z-10"> <!-- width を style 属性に追加 -->
                                     {{ __('Email Password Reset Link') }}
                                 </button>
                             </div>

@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <style>
         .login-container {
-            max-width: 400px; /* フォームの最大幅を400pxに設定 */
+            max-width: 500px; /* フォームの最大幅を400pxに設定 */
             margin: 0 auto; /* 画面の中央に配置 */
             padding-top: 100px; /* 画面上部からの余白を100pxに設定 */
         }
@@ -22,11 +22,10 @@
 </head>
 <body class="antialiased">
     <div class="login-container">
-        <h1>ログイン</h1>
         <section class="text-gray-600 body-font">
             <div class="flex flex-wrap items-center justify-center">
                 <div class="login-form">
-                    <div class="lg:w-1/2 md:w-3/4 sm:w-full bg-gray-100 rounded-lg p-4 flex flex-col mx-auto mt-10">
+                    <div class=" md:w-3/4 sm:w-full bg-gray-100 rounded-lg p-4 flex flex-col mx-auto mt-10">
 
                     <h2 class="text-gray-900 text-lg font-medium title-font mb-5">ログイン</h2>
                     <!-- Session Status -->

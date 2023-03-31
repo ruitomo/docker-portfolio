@@ -9,7 +9,8 @@
             </form>
             <a href="#" class="text-2xl font-bold logout-button">ログアウト</a>
             
-            <a href="#" class="text-2xl font-bold">退会について</a>
+            <a href="{{ route('delete-account-page') }}" class="text-2xl font-bold">退会について</a>
+
         </div>
     </div>
     
