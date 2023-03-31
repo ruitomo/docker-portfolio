@@ -6,6 +6,8 @@
     <title>Laravel</title>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
     <style>
         .button-container {
           display: flex;
@@ -56,6 +58,7 @@
       </style>
 </head>
 <body class="antialiased">
+  <x-navbar />
     <div class="login-container">
         <section class="text-gray-600 body-font">
             <div class="container px-5 py-24 mx-auto">
@@ -92,5 +95,6 @@
           
           
     </div>
+    <script src="{{ asset('js/main.js') }}"></script>
 </body>
 </html>

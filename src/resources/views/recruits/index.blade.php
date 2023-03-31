@@ -10,42 +10,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
+
 
 </head>
 <body class="antialiased">
-    <header class="bg-white shadow hidden md:block">
-        <nav class="container mx-auto px-6 py-4">
-            <div class="flex justify-between items-center">
-                <div class="text-xl font-semibold text-gray-700">
-                    <a href="/" class="text-2xl font-bold text-indigo-600 hover:text-indigo-500">サウナふれんず</a>
-                </div>
-                <div class="flex space-x-4">
-                    <a href="{{ route('recruit.my-recruits') }}" class="text-indigo-600 hover:text-indigo-500">募集</a>
-                    <a href="{{ route('recruit.index') }}" class="text-indigo-600 hover:text-indigo-500">探す</a>
-                    <a href="{{ route('rooms.index') }}" class="text-indigo-600 hover:text-indigo-500">メッセージ</a>
-                    <a href="{{ route('edit', ['id' => auth()->user()->id]) }}" class="text-indigo-600 hover:text-indigo-500">マイページ</a>
-                    
-                </div>
-            </div>
-        </nav>
-    </header>
-
-    <!-- The rest of the page content -->
-
-    <div class="fixed bottom-0 w-full bg-white shadow md:hidden bottom-nav-container">
-        <nav class="container mx-auto">
-            <div class="flex justify-around items-center">
-                <a href="{{ route('recruit.my-recruits') }}" class="{{ Request::routeIs('recruit.my-recruits') ? 'active-nav-button' : '' }} bottom-nav-button text-white hover:text-white bottom-nav-divider">募集</a>
-                <a href="{{ route('recruit.index') }}" class="{{ Request::routeIs('recruit.index') ? 'active-nav-button' : '' }} bottom-nav-button text-white hover:text-white bottom-nav-divider">探す</a>
-                <a href="{{ route('rooms.index') }}" class="{{ Request::routeIs('rooms.index') ? 'active-nav-button' : '' }} bottom-nav-button text-white hover:text-white bottom-nav-divider">メッセージ</a>
-                <a href="{{ route('edit', ['id' => auth()->user()->id]) }}" class="{{ Request::routeIs('edit') ? 'active-nav-button' : '' }} bottom-nav-button text-white hover:text-white">マイページ</a>
-            </div>
-        </nav>
-    </div>
+    <x-navbar />
     
     <div class="recruit-container">
         <section class="text-gray-600 body-font">
-            <div class="container px-5 py-20 mx-auto">
+            <div class="container px-5 py-10 mx-auto">
                 {{-- <div class="title-container">
                     <h1 class="text-6xl font-medium title-font mb-2 text-gray-900" style="font-size: 48px;">探す</h1>
                 </div> --}}
@@ -109,6 +83,7 @@
             </div>
         </section>
     </div>
-                            
+    <script src="{{ asset('js/main.js') }}"></script>
+          
 </body>
 </html>

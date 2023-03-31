@@ -94,3 +94,11 @@ Route::delete('rooms/{room}', [RoomController::class, 'destroy'])->name('rooms.d
 
 //募集詳細閲覧
 Route::get('/recruits/{recruit}/watch-show', [App\Http\Controllers\RecruitController::class, 'watchShow'])->name('recruit.watch-show');
+
+// 退会用画面
+Route::get('/delete-account', function () {
+    return view('delete-account');
+})->middleware(['auth'])->name('delete-account-page');
+
+// アカウント削除処理
+Route::post('/delete-account', [App\Http\Controllers\DeleteAccountController::class, 'deleteAccount'])->middleware(['auth'])->name('delete-account');
