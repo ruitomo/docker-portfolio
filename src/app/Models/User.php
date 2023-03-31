@@ -9,6 +9,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Database\Eloquent\Model;
 
+
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
@@ -61,6 +62,6 @@ class User extends Authenticatable
 
     public function recruits()
     {
-        return $this->hasMany(Recruit::class);
+        return $this->hasMany(Recruit::class, 'from_user_id');
     }
 }
