@@ -32,6 +32,12 @@ require __DIR__ . '/auth.php';
 // 新規メールアドレス更新
 Route::get("reset/{token}", [ChangeEmailController::class, 'reset']);
 
+// メールアドレス変更ページ
+Route::get('/change-email', function () {
+    return view('change-email');
+})->middleware(['auth'])->name('change-email');
+
+
 //プロフィール画面
 Route::get('user/profile/{id}', [ProfileController::class, 'add'])
     ->name('user.profile');

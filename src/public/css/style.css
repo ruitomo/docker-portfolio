@@ -81,4 +81,8 @@
     .button-container a {
         margin: 0.5rem 0;
     }
+
+    .settings-btn-container {
+        justify-content: flex-end;
+    }
 }
