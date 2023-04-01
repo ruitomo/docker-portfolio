@@ -21,6 +21,13 @@
     </style>
 </head>
 <body class="antialiased">
+    <!-- タイムアウトアラート表示 -->
+    @if (session('timeout'))
+    <div class="alert alert-danger">
+        {{ session('timeout') }}
+    </div>
+    @endif
+
     <div class="login-container">
         <section class="text-gray-600 body-font">
             <div class="flex flex-wrap items-center justify-center">
