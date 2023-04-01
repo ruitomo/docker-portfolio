@@ -6,6 +6,7 @@
     <title>退会画面</title>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <style>
         .delete-account-container {
             max-width: 500px;
@@ -21,6 +22,7 @@
     </style>
 </head>
 <body class="antialiased">
+    <x-navbar />
     <div class="delete-account-container">
         <section class="text-gray-600 body-font">
             <div class="flex flex-wrap items-center justify-center">
@@ -38,5 +40,6 @@
             </div>
         </section>
     </div>
+    <script src="{{ asset('js/main.js') }}"></script>
 </body>
 </html>

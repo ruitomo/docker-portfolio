@@ -16,7 +16,6 @@
 </head>
 <body class="antialiased">
     <x-navbar />
-    
     <div class="recruit-container">
         <section class="text-gray-600 body-font">
             <div class="container px-5 py-10 mx-auto">
@@ -39,7 +38,7 @@
                     </div>
                 </div>
                 <div class="grid grid-cols-1 gap-6">
-                    @foreach ($recruits as $recruit)
+                    @forelse ($recruits as $recruit)
                     @php
                     $now = Carbon::now();
                     $updatedAt = Carbon::parse($recruit->updated_at);
@@ -77,13 +76,16 @@
                             </div>
                         </div>
                     </div>
-                @endforeach
+                    @empty
+                    <div class="bg-white shadow-md rounded-md p-4 mb-4">
+                        <p class="text-center text-gray-800 font-semibold">現在は募集がありません。募集してみましょう！</p>
+                    </div>
+                    @endforelse
 
                 </div>
             </div>
         </section>
     </div>
     <script src="{{ asset('js/main.js') }}"></script>
-          
 </body>
 </html>

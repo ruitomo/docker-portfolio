@@ -14,7 +14,6 @@
           justify-content: center;
           align-items: center;
           flex-wrap: wrap;
-          /* gap: 1rem; */
         }
       
         .button-container button,
@@ -70,7 +69,7 @@
                   </div>
               </div>
               <div class="grid grid-cols-1 gap-6">
-                @foreach ($recruits as $recruit)
+                @forelse ($recruits as $recruit)
                   <div class="border border-gray-200 p-6 rounded-lg bg-gray-100">
                     <h2 class="text-lg text-gray-900 font-medium title-font mb-2">{{ $recruit->headline }}</h2>
                     <p class="leading-relaxed text-base">サウナ施設名: {{ $recruit->facility }}</p>
@@ -88,7 +87,11 @@
                       </div>
                       
                   </div>
-                @endforeach
+                  @empty
+                  <div class="bg-white shadow-md rounded-md p-4 mb-4">
+                      <p class="text-center text-gray-800 font-semibold">あなたが募集したものはありません。募集してみましょう！</p>
+                  </div>
+                  @endforelse
               </div>
             </div>
           </section>

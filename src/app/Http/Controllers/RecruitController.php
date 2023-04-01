@@ -82,35 +82,38 @@ class RecruitController extends Controller
 
     public function apply(Request $request, Recruit $recruit)
     {
-
         // マッチング確認
         $matchingExists = Matching::where('to_user_id', $recruit->from_user_id)
             ->where('recruit_id', $recruit->id)
             ->exists();
 
+        // マッチングが存在しない場合のみ、マッチングテーブルにデータを追加
+        if (!$matchingExists) {
+            // マッチングテーブルにデータを追加
+            $matching = Matching::create([
+                'from_user_id' => auth()->id(),
+                'to_user_id' => $recruit->from_user_id,
+                'recruit_id' => $recruit->id,
+            ]);
 
-        // マッチングテーブルにデータを追加
-        $matching = Matching::create([
-            'from_user_id' => auth()->id(),
-            'to_user_id' => $recruit->from_user_id,
-            'recruit_id' => $recruit->id,
-        ]);
+            // ルームテーブルにデータを追加
+            $room = Room::create([
+                'from_user_id' => auth()->id(),
+                'to_user_id' => $recruit->from_user_id,
+            ]);
 
-        // ルームテーブルにデータを追加
-        $room = Room::create([
-            'from_user_id' => auth()->id(),
-            'to_user_id' => $recruit->from_user_id,
-        ]);
-
-        // // 募集データにroom_idを追加
-        // $recruit->update(['room_id' => $room->id]);
-        // Recruitインスタンスにroom_idを設定して保存
-        $recruit->room_id = $room->id;
-        $recruit->save();
+            // Recruitインスタンスにroom_idを設定して保存
+            $recruit->room_id = $room->id;
+            $recruit->save();
+        } else {
+            // マッチングが存在する場合はエラーメッセージを表示
+            return redirect()->back()->withErrors(['error' => 'この募集は既にマッチングしています。']);
+        }
 
         // リダイレクト
         return redirect()->route('messages.index', $room->id);
     }
+
 
 
     // my募集一覧

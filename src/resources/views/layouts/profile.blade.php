@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Profile Details</title>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <style>
         .profile-container {
@@ -33,6 +34,7 @@
     </style>
 </head>
 <body class="antialiased">
+  <x-navbar />
     <div class="profile-container">
         <section class="text-gray-600 body-font">
             <div class="flex flex-wrap items-center justify-center">
@@ -63,5 +65,6 @@
             </div>
         </section>
     </div>
+    <script src="{{ asset('js/main.js') }}"></script>
 </body>
 </html>

@@ -6,11 +6,21 @@
     <title>Laravel</title>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <style>
+        .profile-form {
+            background-color: #f3f4f6;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+            width: 100%;
+            max-width: 600px;
+        }
+        
         .login-container {
             max-width: 500px;
             margin: 0 auto;
-            padding-top: 100px;
+            padding-top: 30px;
         }
 
         .login-form {
@@ -21,6 +31,7 @@
     </style>
 </head>
 <body class="antialiased">
+    <x-navbar />
     <div class="login-container">
         <section class="text-gray-600 body-font">
             <div class="flex flex-wrap items-center justify-center">
@@ -62,5 +73,6 @@
             </div>
         </section>
     </div>
+    <script src="{{ asset('js/main.js') }}"></script>
 </body>
 </html>

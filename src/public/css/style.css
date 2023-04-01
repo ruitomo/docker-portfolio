@@ -72,6 +72,11 @@
     color: #ffffff;
 }
 
+.active-link {
+    border-bottom: 2px solid #4f46e5;
+    font-weight: bold;
+}
+
 @media screen and (max-width: 767px) {
     .button-container {
         flex-direction: column;

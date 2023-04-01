@@ -11,6 +11,7 @@
 </head>
 
 <body class="antialiased bg-gray-100">
+    <x-navbar />
     <div class="container mx-auto mt-10">
         <h1 class="text-3xl mb-6">Messages</h1>
         <div class="bg-white shadow-md rounded-md p-4 mb-4">
@@ -83,6 +84,7 @@
             <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded">Send</button>
         </form>
     </div>
+    <script src="{{ asset('js/main.js') }}"></script>
 </body>
 </html>
 

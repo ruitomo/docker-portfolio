@@ -6,6 +6,7 @@
     <title>Laravel</title>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <style>
         .login-container {
             max-width: 500px;
@@ -21,6 +22,7 @@
     </style>
 </head>
 <body class="antialiased">
+    <x-navbar />
     <div class="login-container">
         <section class="text-gray-600 body-font">
             <div class="flex flex-wrap items-center justify-center">
@@ -46,5 +48,6 @@
             </div>
         </section>
     </div>
+    <script src="{{ asset('js/main.js') }}"></script>
 </body>
 </html>

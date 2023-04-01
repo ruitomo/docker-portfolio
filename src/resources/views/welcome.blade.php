@@ -56,7 +56,7 @@
     <body class="antialiased">
         <div class="buttons-container">
             @auth
-                <a href="{{ url('/dashboard') }}" class="button">Dashboard</a>
+                <a href="{{ url('/dashboard') }}" class="button">アプリへ戻る</a>
             @else
                 <a href="{{ route('login') }}" class="button">ログイン</a>
                 @if (Route::has('register'))
