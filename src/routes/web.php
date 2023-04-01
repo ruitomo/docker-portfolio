@@ -23,8 +23,9 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return redirect()->route('rooms.index');
 })->middleware(['auth'])->name('dashboard');
+
 
 Route::post('/email', [ChangeEmailController::class, 'sendChangeEmailLink']);
 require __DIR__ . '/auth.php';

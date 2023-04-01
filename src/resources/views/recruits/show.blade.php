@@ -10,6 +10,7 @@
   
 </head>
 <body class="antialiased">
+    <x-navbar />
     <div class="recruit-container">
         <section class="text-gray-600 body-font">
             <div class="container px-5 py-24 mx-auto">
@@ -64,6 +65,7 @@
             </div>
         </section>
     </div>
+    <script src="{{ asset('js/main.js') }}"></script>
 </body>
 </html>
 
