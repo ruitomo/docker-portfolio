@@ -13,7 +13,7 @@
 <body class="antialiased bg-gray-100">
     <x-navbar />
     <div class="container mx-auto mt-10">
-        <h1 class="text-3xl mb-6">Messages</h1>
+    
         <div class="bg-white shadow-md rounded-md p-4 mb-4">
             <div class="flex items-center justify-between">
                 <div class="flex items-center">
@@ -78,10 +78,10 @@
         <form action="{{ route('messages.store', $room->id) }}" method="POST" class="bg-white shadow-md rounded-md p-4">
             @csrf
             <div class="mb-4">
-                <label for="body" class="block text-gray-700 text-sm font-semibold mb-2">Message</label>
+                <label for="body" class="block text-gray-700 text-sm font-semibold mb-2">メッセージ</label>
                 <textarea name="body" id="body" class="form-control w-full px-3 py-2 text-gray-700 border rounded-lg focus:outline-none" rows="3"></textarea>
             </div>
-            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded">Send</button>
+            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded">送る</button>
         </form>
     </div>
     <script src="{{ asset('js/main.js') }}"></script>
