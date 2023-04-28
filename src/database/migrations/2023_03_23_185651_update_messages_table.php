@@ -1,9 +1,8 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 class UpdateMessagesTable extends Migration
 {
@@ -15,37 +14,26 @@ class UpdateMessagesTable extends Migration
     public function up()
     {
         Schema::table('messages', function (Blueprint $table) {
-            $foreignKeys = DB::select(
-                "SELECT CONSTRAINT_NAME, COLUMN_NAME
-                FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE
-                WHERE TABLE_SCHEMA = ? AND TABLE_NAME = ? AND REFERENCED_TABLE_NAME IS NOT NULL",
-                [config('database.connections.mysql.database'), 'messages']
-            );
+            $table->dropForeign(['sender_id']);
+            $table->dropForeign(['receiver_id']);
+            $table->dropForeign(['room_id']);
 
             $foreignKeys = collect($foreignKeys)->mapWithKeys(function ($item) {
                 return [$item->COLUMN_NAME => $item->CONSTRAINT_NAME];
             });
 
-            if ($foreignKeys->has('sender_id')) {
-                $table->dropForeign([$foreignKeys['sender_id']]);
+            if ($foreignKeys->has('<from_user_id')) {
+                $table->dropForeign([$foreignKeys['<from_user_id']]);
             }
-            if ($foreignKeys->has('receiver_id')) {
-                $table->dropForeign([$foreignKeys['receiver_id']]);
+            if ($foreignKeys->has('to_user_id')) {
+                $table->dropForeign([$foreignKeys['to_user_id']]);
             }
             if ($foreignKeys->has('room_id')) {
                 $table->dropForeign([$foreignKeys['room_id']]);
             }
 
-            if (Schema::hasColumn('messages', 'sender_id')) {
-                $table->unsignedBigInteger('from_user_id')->after('id');
-                $table->dropColumn('sender_id');
-            }
-
-            if (Schema::hasColumn('messages', 'receiver_id')) {
-                $table->unsignedBigInteger('to_user_id')->after('from_user_id');
-                $table->dropColumn('receiver_id');
-            }
-
+            $table->renameColumn('<from_user_id', 'from_user_id');
+            $table->renameColumn('to_user_id', 'to_user_id');
 
             $table->unsignedBigInteger('from_user_id')->change();
             $table->unsignedBigInteger('to_user_id')->change();
@@ -53,7 +41,7 @@ class UpdateMessagesTable extends Migration
             $table->foreign('from_user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('to_user_id')->references('id')->on('users')->onDelete('cascade');
 
-            $table->dropColumn('room_id');
+            $table->dropColumn(['sender_id', 'receiver_id', 'room_id']);
         });
     }
 
@@ -71,18 +59,14 @@ class UpdateMessagesTable extends Migration
             $table->dropForeign(['from_user_id']);
             $table->dropForeign(['to_user_id']);
 
-            if (Schema::hasColumn('messages', 'from_user_id')) {
-                $table->unsignedBigInteger('sender_id')->after('id');
-                $table->dropColumn('from_user_id');
-            }
-
-            if (Schema::hasColumn('messages', 'to_user_id')) {
-                $table->unsignedBigInteger('receiver_id')->after('sender_id');
-                $table->dropColumn('to_user_id');
-            }
+            $table->renameColumn('from_user_id', 'sender_id');
+            $table->renameColumn('to_user_id', 'receiver_id');
 
             $table->foreign('sender_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('receiver_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('room_id')->references('id')->on('rooms')->onDelete('cascade');
+
+            $table->dropColumn(['from_user_id', 'to_user_id']);
         });
     }
 }
