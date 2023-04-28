@@ -26,18 +26,18 @@ class UpdateMessagesTable extends Migration
                 return [$item->COLUMN_NAME => $item->CONSTRAINT_NAME];
             });
 
-            if ($foreignKeys->has('<from_user_id')) {
-                $table->dropForeign([$foreignKeys['<from_user_id']]);
+            if ($foreignKeys->has('sender_id')) {
+                $table->dropForeign([$foreignKeys['sender_id']]);
             }
-            if ($foreignKeys->has('to_user_id')) {
-                $table->dropForeign([$foreignKeys['to_user_id']]);
+            if ($foreignKeys->has('receiver_id')) {
+                $table->dropForeign([$foreignKeys['receiver_id']]);
             }
             if ($foreignKeys->has('room_id')) {
                 $table->dropForeign([$foreignKeys['room_id']]);
             }
 
-            $table->renameColumn('<from_user_id', 'from_user_id');
-            $table->renameColumn('to_user_id', 'to_user_id');
+            $table->renameColumn('sender_id', 'from_user_id');
+            $table->renameColumn('receiver_id', 'to_user_id');
 
             $table->unsignedBigInteger('from_user_id')->change();
             $table->unsignedBigInteger('to_user_id')->change();
