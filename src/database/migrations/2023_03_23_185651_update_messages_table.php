@@ -37,12 +37,15 @@ class UpdateMessagesTable extends Migration
             }
 
             if (Schema::hasColumn('messages', 'sender_id')) {
-                $table->renameColumn('sender_id', 'from_user_id');
+                $table->unsignedBigInteger('from_user_id');
+                $table->dropColumn('sender_id');
             }
 
             if (Schema::hasColumn('messages', 'receiver_id')) {
-                $table->renameColumn('receiver_id', 'to_user_id');
+                $table->unsignedBigInteger('to_user_id');
+                $table->dropColumn('receiver_id');
             }
+
 
             $table->unsignedBigInteger('from_user_id')->change();
             $table->unsignedBigInteger('to_user_id')->change();
