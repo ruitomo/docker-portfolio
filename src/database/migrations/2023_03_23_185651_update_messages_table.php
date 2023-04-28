@@ -37,12 +37,12 @@ class UpdateMessagesTable extends Migration
             }
 
             if (Schema::hasColumn('messages', 'sender_id')) {
-                $table->unsignedBigInteger('from_user_id');
+                $table->unsignedBigInteger('from_user_id')->after('id');
                 $table->dropColumn('sender_id');
             }
 
             if (Schema::hasColumn('messages', 'receiver_id')) {
-                $table->unsignedBigInteger('to_user_id');
+                $table->unsignedBigInteger('to_user_id')->after('from_user_id');
                 $table->dropColumn('receiver_id');
             }
 
@@ -71,8 +71,15 @@ class UpdateMessagesTable extends Migration
             $table->dropForeign(['from_user_id']);
             $table->dropForeign(['to_user_id']);
 
-            $table->renameColumn('from_user_id', 'sender_id');
-            $table->renameColumn('to_user_id', 'receiver_id');
+            if (Schema::hasColumn('messages', 'from_user_id')) {
+                $table->unsignedBigInteger('sender_id')->after('id');
+                $table->dropColumn('from_user_id');
+            }
+
+            if (Schema::hasColumn('messages', 'to_user_id')) {
+                $table->unsignedBigInteger('receiver_id')->after('sender_id');
+                $table->dropColumn('to_user_id');
+            }
 
             $table->foreign('sender_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('receiver_id')->references('id')->on('users')->onDelete('cascade');
