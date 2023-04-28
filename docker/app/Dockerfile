@@ -13,4 +13,6 @@ COPY --from=composer:2.0 /usr/bin/composer /usr/bin/composer
 COPY --from=node:18.14 /usr/local/bin /usr/local/bin
 COPY --from=node:18.14 /usr/local/lib /usr/local/lib
 
+COPY . /app
+
 WORKDIR /app
