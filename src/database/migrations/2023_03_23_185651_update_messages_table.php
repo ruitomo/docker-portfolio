@@ -18,25 +18,8 @@ class UpdateMessagesTable extends Migration
             $table->dropForeign(['receiver_id']);
             $table->dropForeign(['room_id']);
 
-            $foreignKeys = collect($foreignKeys)->mapWithKeys(function ($item) {
-                return [$item->COLUMN_NAME => $item->CONSTRAINT_NAME];
-            });
-
-            if ($foreignKeys->has('<from_user_id')) {
-                $table->dropForeign([$foreignKeys['<from_user_id']]);
-            }
-            if ($foreignKeys->has('to_user_id')) {
-                $table->dropForeign([$foreignKeys['to_user_id']]);
-            }
-            if ($foreignKeys->has('room_id')) {
-                $table->dropForeign([$foreignKeys['room_id']]);
-            }
-
-            $table->renameColumn('<from_user_id', 'from_user_id');
-            $table->renameColumn('to_user_id', 'to_user_id');
-
-            $table->unsignedBigInteger('from_user_id')->change();
-            $table->unsignedBigInteger('to_user_id')->change();
+            $table->unsignedBigInteger('from_user_id')->after('id');
+            $table->unsignedBigInteger('to_user_id')->after('from_user_id');
 
             $table->foreign('from_user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('to_user_id')->references('id')->on('users')->onDelete('cascade');
@@ -53,14 +36,9 @@ class UpdateMessagesTable extends Migration
     public function down()
     {
         Schema::table('messages', function (Blueprint $table) {
-            $table->unsignedBigInteger('room_id')->after('to_user_id');
-            $table->foreign('room_id')->references('id')->on('rooms')->onDelete('cascade');
-
-            $table->dropForeign(['from_user_id']);
-            $table->dropForeign(['to_user_id']);
-
-            $table->renameColumn('from_user_id', 'sender_id');
-            $table->renameColumn('to_user_id', 'receiver_id');
+            $table->unsignedBigInteger('sender_id')->after('id');
+            $table->unsignedBigInteger('receiver_id')->after('sender_id');
+            $table->unsignedBigInteger('room_id')->after('receiver_id');
 
             $table->foreign('sender_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('receiver_id')->references('id')->on('users')->onDelete('cascade');
