@@ -14,7 +14,7 @@ class AddRecruitIdToMatchingsTable extends Migration
     public function up()
     {
         Schema::table('matchings', function (Blueprint $table) {
-            $table->unsignedBigInteger('recruit_id')->after('room_id');
+            $table->unsignedBigInteger('recruit_id')->after('to_user_id');
             $table->foreign('recruit_id')->references('id')->on('recruits')->onDelete('cascade');
         });
     }

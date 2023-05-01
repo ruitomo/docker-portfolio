@@ -14,7 +14,7 @@ class AddRoomIdToRecruitsTable extends Migration
     public function up()
     {
         Schema::table('recruits', function (Blueprint $table) {
-            $table->unsignedBigInteger('room_id')->nullable()->after('to_user_id');
+            $table->unsignedBigInteger('room_id')->nullable()->after('from_user_id');
             $table->foreign('room_id')->references('id')->on('rooms')->onDelete('set null');
         });
     }

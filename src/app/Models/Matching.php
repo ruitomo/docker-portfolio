@@ -11,7 +11,6 @@ class Matching extends Model
     protected $fillable = [
         'from_user_id',
         'to_user_id',
-        'room_id',
         'recruit_id',
     ];
 

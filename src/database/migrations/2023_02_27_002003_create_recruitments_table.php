@@ -16,7 +16,6 @@ class CreateRecruitmentsTable extends Migration
         Schema::create('recruitments', function (Blueprint $table) {
             $table->id();
             $table->integer('from_user_id');
-            $table->integer('to_user_id');
             $table->text('facility');
             $table->dateTime('meeting_time');
             $table->text('headline');

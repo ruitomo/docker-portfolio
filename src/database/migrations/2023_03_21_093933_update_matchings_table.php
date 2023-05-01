@@ -16,12 +16,10 @@ class UpdateMatchingsTable extends Migration
         Schema::table('matchings', function (Blueprint $table) {
             $table->unsignedBigInteger('from_user_id')->change();
             $table->unsignedBigInteger('to_user_id')->change();
-            $table->unsignedBigInteger('room_id');
 
             // Add foreign key constraints
             $table->foreign('from_user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('to_user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('room_id')->references('id')->on('rooms')->onDelete('cascade');
         });
     }
 
@@ -36,10 +34,6 @@ class UpdateMatchingsTable extends Migration
             // Drop foreign key constraints
             $table->dropForeign(['from_user_id']);
             $table->dropForeign(['to_user_id']);
-            $table->dropForeign(['room_id']);
-
-            // Drop room_id column
-            $table->dropColumn('room_id');
         });
     }
 }

@@ -17,7 +17,6 @@ class CreateMatchingsTable extends Migration
             $table->id();
             $table->integer('from_user_id');
             $table->integer('to_user_id');
-            $table->integer('matching_data');
             $table->timestamps();
         });
     }
