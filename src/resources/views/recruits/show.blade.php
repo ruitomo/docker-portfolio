@@ -54,11 +54,14 @@
                             <p class="leading-relaxed text-base">サ飯待ち合わせ時間: {{ $recruit->meeting_time }}</p>
                             <p class="leading-relaxed text-base">募集内容: {{ $recruit->recruitment_contents }}</p>
                             <div class="mt-4 button-container">
-                                <form action="{{ route('recruit.apply', $recruit->id) }}" method="POST">
-                                    @csrf
-                                    <button type="submit" style="background-color: #89CFF0;" class="text-white border-0 py-2 focus:outline-none hover:bg-blue-400 rounded text-lg relative z-10">応募する</button>
-                                </form>
+                                @if (auth()->id() != $recruit->from_user_id)
+                                    <form action="{{ route('recruit.apply', $recruit->id) }}" method="POST">
+                                        @csrf
+                                        <button type="submit" style="background-color: #89CFF0;" class="text-white border-0 py-2 focus:outline-none hover:bg-blue-400 rounded text-lg relative z-10">応募する</button>
+                                    </form>
+                                @endif
                             </div>
+                            
                         
                     </div>
                 </div>
