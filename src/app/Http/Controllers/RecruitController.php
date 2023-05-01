@@ -68,6 +68,11 @@ class RecruitController extends Controller
     // 募集の削除
     public function destroy(Recruit $recruit)
     {
+        // 関連するチャットルームを削除
+        if ($recruit->room) {
+            $recruit->room->delete();
+        }
+
         $recruit->delete();
 
         return redirect()->route('recruit.my-recruits');

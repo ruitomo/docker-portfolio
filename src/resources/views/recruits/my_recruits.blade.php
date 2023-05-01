@@ -82,7 +82,7 @@
                         <form action="{{ route('recruit.destroy', $recruit) }}" method="POST" style="display: inline-block;">
                           @csrf
                           @method('DELETE')
-                          <button type="submit" style="background-color: #89CFF0;" class="text-white border-0 py-2 focus:outline-none hover:bg-blue-400 rounded text-lg relative z-10">削除</button>
+                          <button type="submit" style="background-color: #89CFF0;" class="text-white border-0 py-2 focus:outline-none hover:bg-blue-400 rounded text-lg relative z-10" onclick="return confirm('本当に削除しますか？my募集を削除すると、この募集でマッチングしたチャットルームも削除されます。');">削除</button>
                         </form>
                       </div>
                       
