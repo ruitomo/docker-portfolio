@@ -59,8 +59,6 @@ Composer 2.5.0
 
 HTML / CSS
 
-Javascript(Vue.js)
-
 tailwindcss 3.1.0
 
 PHPUnit
@@ -68,6 +66,18 @@ PHPUnit
 VScode
 
 aws-cli/2.11.9
+
+# デザインカンプ
+![デザインカンプ](https://user-images.githubusercontent.com/114846314/237008074-22c6c1f4-16c8-409a-89ac-8d7aea51326c.png)
+
+
+# ER図
+<img width="969" alt="ER図" src="https://user-images.githubusercontent.com/114846314/237008261-2dabef4c-534b-4cda-97cc-9488070f8787.png">
+
+# テーブル定義
+<img width="846" alt="テーブル定義" src="https://user-images.githubusercontent.com/114846314/237008429-a4780269-0aad-48ae-a78e-4d3b68cdbbe6.png">
+
+
  
 # インフラ構成図
- ![awsインフラ構成図](https://user-images.githubusercontent.com/114846314/230758197-589374e1-1e28-4794-a3cd-562f2bf6fa2a.jpg)
+![aws構成図](https://user-images.githubusercontent.com/114846314/237008314-1b64cdca-428d-47ca-b71b-2cc4d15549ba.jpg)
