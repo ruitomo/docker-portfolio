@@ -43,28 +43,25 @@
 - バックエンド
   - PHP 8.0.28
   - Laravel  8.83.27
+  - mysql 8.0.32 
+  - phpMyAdmin 5.2.1
 
-nginx 1.20.2
+- フロントエンド
+ - HTML / CSS
+ - tailwindcss 3.1.0
 
-mysql 8.0.32 
+- 開発環境
+　-　nginx 1.20.2
+　-　Docker 20.10.22
+　-　Docker Compose 2.15.1
+　-　Composer 2.5.0
+　-　PHPUnit
+　-　VScode
+　-　aws-cli/2.11.9
 
-phpMyAdmin 5.2.1
+- インフラ
+　-　AWS(EC2,RDS,ALB,ACM,Route53,S3,CloudWatch)
 
-Docker 20.10.22
-
-Docker Compose 2.15.1
-
-Composer 2.5.0
-
-HTML / CSS
-
-tailwindcss 3.1.0
-
-PHPUnit
-
-VScode
-
-aws-cli/2.11.9
 
 # デザインカンプ
 ![デザインカンプ](https://user-images.githubusercontent.com/114846314/237008074-22c6c1f4-16c8-409a-89ac-8d7aea51326c.png)
