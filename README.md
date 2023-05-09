@@ -47,20 +47,20 @@
   - phpMyAdmin 5.2.1
 
 - フロントエンド
- - HTML / CSS
- - tailwindcss 3.1.0
+  - HTML / CSS
+  - tailwindcss 3.1.0
 
 - 開発環境
-　-　nginx 1.20.2
-　-　Docker 20.10.22
-　-　Docker Compose 2.15.1
-　-　Composer 2.5.0
-　-　PHPUnit
-　-　VScode
-　-　aws-cli/2.11.9
+　 -　nginx 1.20.2
+　 -　Docker 20.10.22
+　 -　Docker Compose 2.15.1
+　 -　Composer 2.5.0
+　 -　PHPUnit
+　 -　VScode
+　 -　aws-cli/2.11.9
 
 - インフラ
-　-　AWS(EC2,RDS,ALB,ACM,Route53,S3,CloudWatch)
+　 -　AWS(EC2,RDS,ALB,ACM,Route53,S3,CloudWatch)
 
 
 # デザインカンプ
