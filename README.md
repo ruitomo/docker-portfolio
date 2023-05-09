@@ -40,16 +40,14 @@
 7. 画像アップロード機能
  
 # 開発環境
-- バックエンド
+- **バックエンド**
   - PHP 8.0.28
   - Laravel  8.83.27
   - mysql 8.0.32 
   - phpMyAdmin 5.2.1
-
 - フロントエンド
   - HTML / CSS
   - tailwindcss 3.1.0
-
 - 開発環境
   - nginx 1.20.2
   - Docker 20.10.22
@@ -58,10 +56,8 @@
   - PHPUnit
   - VScode
   - aws-cli/2.11.9
-
 - インフラ
   - AWS(EC2,RDS,ALB,ACM,Route53,S3,CloudWatch)
-
 
 # デザインカンプ
 ![デザインカンプ](https://user-images.githubusercontent.com/114846314/237008074-22c6c1f4-16c8-409a-89ac-8d7aea51326c.png)
