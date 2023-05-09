@@ -75,23 +75,5 @@ class ProfileController extends Controller
         $user->fill($request->except('icon_image'));
         $user->save();
         return redirect()->back()->with('success', 'プロフィールを更新しました');
-        // $user = Auth::user();
-        // $user->name = $request->input('name');
-        // $user->gender = $request->input('gender');
-        // $user->birthday = $request->input('birthday');
-        // $user->img_path = $request->input('img_path');
-        // $user->residence = $request->input('residence');
-        // $user->job = $request->input('job');
-        // $user->homesauna = $request->input('homesauna');
-        // $user->aufguss = $request->input('aufguss');
-        // $user->gosauna = $request->input('gosauna');
-        // $user->saunahat = $request->input('saunahat');
-        // $user->hobby = $request->input('hobby');
-        // $user->routine = $request->input('routine');
-        // $user->introduction = $request->input('introduction');
-        // $user->save();
-
-        // return redirect()->back()->with('success', 'プロフィールが更新されました。');
-        // return redirect('/profile');
     }
 }
