@@ -31,6 +31,17 @@ https://samesi-friends.com/
 2. 募集を見て行きたい人がマッチングする。(DM機能もつける)
 3. サウナはそれぞれ楽しみ、合流してサ飯を一緒に食べる！
 
+# 画面イメージ
+
+**トップページ**
+<img width="1468" alt="Screenshot 2023-05-11 9 58 58" src="https://github.com/ruitomo/docker-portfolio/assets/114846314/0f25ef92-2c11-45b2-8751-dea4a5864182">
+
+**チャットページ**
+<img width="455" alt="Screenshot 2023-04-03 8 31 18" src="https://github.com/ruitomo/docker-portfolio/assets/114846314/c60923c2-1c02-4774-87f5-8c6ba7d52bd3">
+
+**募集ページ**
+<img width="383" alt="Screenshot 2023-05-11 10 08 40" src="https://github.com/ruitomo/docker-portfolio/assets/114846314/ec5eeb18-7908-44de-a4ad-0f5e989d2942">
+
 # 苦労したところ
 - DB設計 DBリレーション関連の処理に苦労しました。募集一覧を見てマッチング状況がすぐにわかるように、マッチング状況のステータスを表示させる機能や、マッチング済みの場合は応募出来ないようにする機能を実装できました。
 - Dockerでアプリをコンテナ化することで、開発本番での環境間差異トラブルを低減しました。
