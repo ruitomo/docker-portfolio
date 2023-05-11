@@ -19,15 +19,16 @@
             /* スマホサイズになった場合に適用するスタイル */
             @media only screen and (max-width: 767px) {
                 body {
-                    background-image: url('/images/sp-background.jpg'); /* スマホ用の背景画像に変更 */
+                    background-image: url('/images/sp-background.jpg');
                     background-size: cover;
                     background-repeat: no-repeat;
                     background-position: center center;
                 }
-                .buttons-container { /* 追加 */
+
+                .auth-buttons {
                     flex-direction: column;
                 }
-                .button:not(:first-child) { /* 追加 */
+                .button:not(:first-child) {
                     margin-top: 10px;
                 }
             }
@@ -38,32 +39,47 @@
                 text-decoration: none;
                 font-weight: 600;
                 transition: background-color 0.3s;
+                white-space: nowrap;
             }
             .button:hover {
                 background-color: #5fb6de;
             }
             .buttons-container {
                 position: absolute;
-                bottom: 10%;
+                bottom: 8%;
                 left: 50%;
                 transform: translateX(-50%);
-                display: flex; /* 追加 */
-                justify-content: center; /* 追加 */
-                gap: 3rem; /* 追加 */
+                display: flex; 
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+            }
+            .guest-login {
+                margin-bottom: 1rem;
+            }
+            .auth-buttons {
+                display: flex;
+                gap: 3rem;
             }
         </style>
     </head>
     <body class="antialiased">
         <div class="buttons-container">
-            @auth
-                <a href="{{ url('/dashboard') }}" class="button">アプリへ戻る</a>
-            @else
-                <a href="{{ route('login') }}" class="button">ログイン</a>
-                @if (Route::has('register'))
-                    <a href="{{ route('register') }}" class="button">会員登録</a>
-                @endif
-            @endauth
-        </div>
+    <form method="POST" action="{{ route('guestLogin') }}" class="guest-login">
+        @csrf
+        <button class="button">ゲストログイン</button>
+    </form>
+    <div class="auth-buttons">
+        @auth
+            <a href="{{ url('/dashboard') }}" class="button">アプリへ戻る</a>
+        @else
+            <a href="{{ route('login') }}" class="button">ログイン</a>
+            @if (Route::has('register'))
+                <a href="{{ route('register') }}" class="button">会員登録</a>
+            @endif
+        @endauth
+    </div>
+</div>
     </body>
 </html>
 

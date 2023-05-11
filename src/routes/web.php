@@ -6,6 +6,7 @@ use App\Http\Controllers\ChangeEmailController;
 use App\Http\Controllers\RecruitController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\RoomController;
+use App\Http\Controllers\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -103,3 +104,6 @@ Route::get('/delete-account', function () {
 
 // アカウント削除処理
 Route::post('/delete-account', [App\Http\Controllers\DeleteAccountController::class, 'deleteAccount'])->middleware(['auth'])->name('delete-account');
+
+// ゲストログイン機能
+Route::post('/guest-login', [LoginController::class, 'guest'])->name('guestLogin');
