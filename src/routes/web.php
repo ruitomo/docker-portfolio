@@ -62,16 +62,16 @@ Route::post('/recruit', [RecruitController::class, 'store'])
     ->name('recruit.store');
 
 // 募集編集画面
-Route::get('/recruit/{recruit}/edit', [RecruitController::class, 'edit'])
+Route::get('/recruit/{id}/edit', [RecruitController::class, 'edit'])
     ->name('recruit.edit');
 // 募集更新
-Route::put('/recruit/{recruit}', [RecruitController::class, 'update'])
+Route::put('/recruit/{id}', [RecruitController::class, 'update'])
     ->name('recruit.update');
 // 募集削除
-Route::delete('/recruit/{recruit}', [RecruitController::class, 'destroy'])
+Route::delete('/recruit/{id}', [RecruitController::class, 'destroy'])
     ->name('recruit.destroy');
 // 募集詳細機能
-Route::get('/recruit/{recruit}', [RecruitController::class, 'show'])
+Route::get('/recruit/{id}', [RecruitController::class, 'show'])
     ->name('recruit.show');
 
 // 応募機能

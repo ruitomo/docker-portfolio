@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Apply;
 use App\Models\Matching;
 use App\Models\Room;
+use Illuminate\Support\Facades\Auth;
 
 class RecruitController extends Controller
 {
@@ -47,27 +48,38 @@ class RecruitController extends Controller
         return redirect()->route('recruit.my-recruits');
     }
     // 募集編集画面
-    public function edit(Recruit $recruit)
+    public function edit($id)
     {
+        $recruit = Recruit::findOrFail($id);
+        // ログインユーザーがリソースの所有者であることを確認します。
+        if (Auth::id() !== $recruit->from_user_id) {
+            return redirect()->route('recruit.my-recruits');
+        }
         return view('recruits.edit', compact('recruit'));
     }
     // 募集編集機能
-    public function update(Request $request, Recruit $recruit)
+    public function update(Request $request, $id)
     {
-        // $request->validate([
-        //     'name' => 'required|max:255',
-        //     'age' => 'required|integer',
-        //     'gender' => 'required',
-        //     'description' => 'required|max:500',
-        // ]);
+        $recruit = Recruit::findOrFail($id);
 
+        // ログインユーザーがリソースの所有者であることを確認します。
+        if (Auth::id() !== $recruit->from_user_id) {
+            return redirect()->route('recruit.my-recruits');
+        }
         $recruit->update($request->all());
 
         return redirect()->route('recruit.my-recruits');
     }
     // 募集の削除
-    public function destroy(Recruit $recruit)
+    public function destroy($id)
     {
+        $recruit = Recruit::findOrFail($id);
+
+        // ログインユーザーがリソースの所有者であることを確認します。
+        if (Auth::id() !== $recruit->from_user_id) {
+            return redirect()->route('recruit.my-recruits');
+        }
+
         // 関連するチャットルームを削除
         if ($recruit->room) {
             $recruit->room->delete();
@@ -78,12 +90,11 @@ class RecruitController extends Controller
         return redirect()->route('recruit.my-recruits');
     }
     //募集詳細機能
-    public function show(Recruit $recruit)
+    public function show($id)
     {
+        $recruit = Recruit::findOrFail($id);
         return view('recruits.show', compact('recruit'));
     }
-
-
 
     public function apply(Request $request, Recruit $recruit)
     {
