@@ -14,6 +14,10 @@ class RecruitController extends Controller
     // 募集一覧
     public function index(Request $request)
     {
+        $request->validate([
+            'search' => 'max:30', // 文字数の最大値を30に設定
+        ]);
+
         $search = $request->input('search');
 
         $recruits = Recruit::with('user', 'matching');
